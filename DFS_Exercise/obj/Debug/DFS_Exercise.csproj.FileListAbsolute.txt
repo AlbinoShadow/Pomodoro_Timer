@@ -1,0 +1,9 @@
+D:\Development\DFS_Exercise\DFS_Exercise\bin\Debug\DFS_Exercise.exe.config
+D:\Development\DFS_Exercise\DFS_Exercise\bin\Debug\DFS_Exercise.exe
+D:\Development\DFS_Exercise\DFS_Exercise\bin\Debug\DFS_Exercise.pdb
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.csprojResolveAssemblyReference.cache
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.Form1.resources
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.Properties.Resources.resources
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.csproj.GenerateResource.Cache
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.exe
+D:\Development\DFS_Exercise\DFS_Exercise\obj\Debug\DFS_Exercise.pdb
