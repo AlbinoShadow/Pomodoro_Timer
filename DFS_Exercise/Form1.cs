@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UDPNet;
 
 namespace DFS_Exercise
 {
     public partial class Form1 : Form
     {
-        Random randomBreakTime = new Random();  // Random break time to allow breaks between 3-5 mins and 15-30 mins.
-        int timeLeft;                           // Time left in seconds.
-        int breakNum = 0;                       // Number of breaks taken so far.
-        string timeRemaining;                   // Time remaining in string form for the stopwatch label.
-        bool breakTime = false;                 // Boolean to determine whether or not it's break time.
+        Random randomBreakTime = new Random();      // Random break time to allow breaks between 3-5 mins and 15-30 mins.
+        int timeLeft;                               // Time left in seconds.
+        int breakNum = 0;                           // Number of breaks taken so far.
+        string timeRemaining;                       // Time remaining in string form for the stopwatch label.
+        bool breakTime = false;                     // Boolean to determine whether or not it's break time.
+        UDPNet.UDPNet udp = new UDPNet.UDPNet();    // Object for sending/receiving via UDP.
 
         public Form1()
         {
@@ -25,7 +27,7 @@ namespace DFS_Exercise
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            udp.start();
         }
 
         // Timer ticks every 1000 ms.
@@ -42,6 +44,7 @@ namespace DFS_Exercise
                     timeRemaining = (timeLeft / 60).ToString() + ":0" + (timeLeft % 60).ToString();
 
                 pomodoro.Text = timeRemaining;
+                udp.send(breakTime);
             }
             // If the timer has hit zero:
             else
@@ -67,6 +70,7 @@ namespace DFS_Exercise
                     MessageBox.Show("Time to get back to work!", "Time to work!");
                     breakLabel.Text = "You should be working!";
                 }
+                udp.send(breakTime);
             }
         }
 

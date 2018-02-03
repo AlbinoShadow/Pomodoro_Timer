@@ -36,6 +36,7 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.pomodoro = new System.Windows.Forms.Label();
             this.breakLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -95,11 +96,21 @@
             this.breakLabel.Text = "Click \"Start\" to start the timer!";
             this.breakLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(102, 226);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Statuses";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.breakLabel);
             this.Controls.Add(this.pomodoro);
             this.Controls.Add(this.stopButton);
@@ -121,6 +132,7 @@
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Label pomodoro;
         private System.Windows.Forms.Label breakLabel;
+        private System.Windows.Forms.Button button1;
     }
 }
 
