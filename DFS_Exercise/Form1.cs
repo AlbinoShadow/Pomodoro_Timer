@@ -1,28 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Forms;
-using UDPNet;
+using System.Collections.Generic;
 
 namespace DFS_Exercise
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         Random randomBreakTime = new Random();      // Random break time to allow breaks between 3-5 mins and 15-30 mins.
         int timeLeft;                               // Time left in seconds.
         int breakNum = 0;                           // Number of breaks taken so far.
         string timeRemaining;                       // Time remaining in string form for the stopwatch label.
+        string hostname = Dns.GetHostName();        // Get the hostname to be passed as an ID with the break status.
         bool breakTime = false;                     // Boolean to determine whether or not it's break time.
-        UDPNet.UDPNet udp = new UDPNet.UDPNet();    // Object for sending/receiving via UDP.
+        UDPNet.UDPNet udp;                          // Object for sending/receiving via UDP.
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        public MainForm(UDPNet.UDPNet UdpInject) : this()
+        {
+            udp = UdpInject;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace DFS_Exercise
                     timeRemaining = (timeLeft / 60).ToString() + ":0" + (timeLeft % 60).ToString();
 
                 pomodoro.Text = timeRemaining;
-                udp.send(breakTime);
+                udp.send(breakTime, hostname);
             }
             // If the timer has hit zero:
             else
@@ -70,7 +70,7 @@ namespace DFS_Exercise
                     MessageBox.Show("Time to get back to work!", "Time to work!");
                     breakLabel.Text = "You should be working!";
                 }
-                udp.send(breakTime);
+                udp.send(breakTime, hostname);
             }
         }
 
@@ -102,6 +102,12 @@ namespace DFS_Exercise
             timeLeft = 1500;            // Set the clock to 25mins.
             pomodoro.Text = "25:00";
             timer1.Stop();
+        }
+
+        private void statusListButton_Click(object sender, EventArgs e)
+        {
+            StatusConnections statusList = new StatusConnections();
+            statusList.Show();
         }
     }
 }
