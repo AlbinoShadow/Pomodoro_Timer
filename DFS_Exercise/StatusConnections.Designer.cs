@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusConnections));
             this.connectionList = new System.Windows.Forms.DataGridView();
+            this.connectionTimer = new System.Windows.Forms.Timer(this.components);
             this.ipList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hostnameList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusList = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connectionTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.connectionList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,11 @@
             this.connectionList.Size = new System.Drawing.Size(284, 161);
             this.connectionList.TabIndex = 0;
             // 
+            // connectionTimer
+            // 
+            this.connectionTimer.Interval = 2000;
+            this.connectionTimer.Tick += new System.EventHandler(this.connectionTimer_Tick);
+            // 
             // ipList
             // 
             this.ipList.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -82,16 +87,11 @@
             // statusList
             // 
             this.statusList.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.statusList.HeaderText = "Status";
+            this.statusList.HeaderText = "On Break";
             this.statusList.Name = "statusList";
             this.statusList.ReadOnly = true;
             this.statusList.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.statusList.Width = 62;
-            // 
-            // connectionTimer
-            // 
-            this.connectionTimer.Interval = 2000;
-            this.connectionTimer.Tick += new System.EventHandler(this.connectionTimer_Tick);
+            this.statusList.Width = 77;
             // 
             // StatusConnections
             // 

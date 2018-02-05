@@ -31,6 +31,7 @@ namespace DFS_Exercise
 
                 foreach (var subItem in item.Value)
                 {
+
                     row[1] = subItem.Key;
                     row[2] = subItem.Value.ToString();
                 }

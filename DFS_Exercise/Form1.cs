@@ -18,6 +18,7 @@ namespace DFS_Exercise
         public MainForm()
         {
             InitializeComponent();
+            FormClosing += MainForm_FormClosing;
         }
 
         public MainForm(UDPNet.UDPNet UdpInject) : this()
@@ -108,6 +109,11 @@ namespace DFS_Exercise
         {
             StatusConnections statusList = new StatusConnections(udp);
             statusList.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            udp.send(true, "Timer Closed");
         }
     }
 }
