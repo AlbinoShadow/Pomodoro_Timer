@@ -39,19 +39,26 @@ namespace UDPNet
             else
                 hostname = msg;
 
-            // If the nested dictionary contains the hostname already, update the status, otherwise add it.
-            if (_nestedDict.ContainsKey(hostname))
-                _nestedDict[hostname] = status;
-            else
-                _nestedDict.Add(hostname, status);
-
-            // If the main dictionary contains data from that IP already, update the nested dictionary, otherwise add it.
-            if (_ipHostStatusList.ContainsKey(incomingIp))
-                _ipHostStatusList[incomingIp] = _nestedDict;
-            else
-                _ipHostStatusList.Add(incomingIp, _nestedDict);
+            set(incomingIp, hostname, status);
 
             startReceiving();
+        }
+
+        public void set(string ip, string host, bool val)
+        {
+            if (!_ipHostStatusList.ContainsKey(ip))
+                _ipHostStatusList.Add(ip, new Dictionary<string, bool>());
+            _nestedDict = _ipHostStatusList[ip];
+            _nestedDict[host] = val;
+        }
+
+        public bool? getStatus(string ip, string host)
+        {
+            if (!_ipHostStatusList.ContainsKey(ip))
+                return null;
+            if (!_nestedDict.ContainsKey(host))
+                return null;
+            return _nestedDict[host];
         }
 
         public Dictionary<string, Dictionary<string, bool>> getConnectionList()

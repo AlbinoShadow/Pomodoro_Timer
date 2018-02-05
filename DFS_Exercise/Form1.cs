@@ -106,7 +106,7 @@ namespace DFS_Exercise
 
         private void statusListButton_Click(object sender, EventArgs e)
         {
-            StatusConnections statusList = new StatusConnections();
+            StatusConnections statusList = new StatusConnections(udp);
             statusList.Show();
         }
     }

@@ -19,11 +19,24 @@ namespace DFS_Exercise
             connectedClientList = UdpInject.getConnectionList();
         }
 
-        // connectionTimer ticks every 100ms.
+        // connectionTimer ticks every 2000ms.
         private void connectionTimer_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("test");
-            Console.WriteLine(connectedClientList.ToString());
+            connectionList.Rows.Clear();
+            foreach (var item in connectedClientList)
+            {
+                string[] row = new string[] { "null", "null", "null" };
+
+                row[0] = item.Key;
+
+                foreach (var subItem in item.Value)
+                {
+                    row[1] = subItem.Key;
+                    row[2] = subItem.Value.ToString();
+                }
+
+                connectionList.Rows.Add(row);
+            }
         }
     }
 }

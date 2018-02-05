@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusConnections));
             this.connectionList = new System.Windows.Forms.DataGridView();
-            this.connectionTimer = new System.Windows.Forms.Timer(this.components);
             this.ipList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hostnameList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusList = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connectionTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.connectionList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,10 +60,6 @@
             this.connectionList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.connectionList.Size = new System.Drawing.Size(284, 161);
             this.connectionList.TabIndex = 0;
-            // 
-            // connectionTimer
-            // 
-            this.connectionTimer.Tick += new System.EventHandler(this.connectionTimer_Tick);
             // 
             // ipList
             // 
@@ -92,6 +88,11 @@
             this.statusList.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.statusList.Width = 62;
             // 
+            // connectionTimer
+            // 
+            this.connectionTimer.Interval = 2000;
+            this.connectionTimer.Tick += new System.EventHandler(this.connectionTimer_Tick);
+            // 
             // StatusConnections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,7 +101,7 @@
             this.Controls.Add(this.connectionList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StatusConnections";
-            this.Text = "List of Employee Statuses";
+            this.Text = "Employee Statuses";
             ((System.ComponentModel.ISupportInitialize)(this.connectionList)).EndInit();
             this.ResumeLayout(false);
 
