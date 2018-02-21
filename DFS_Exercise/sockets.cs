@@ -39,12 +39,11 @@ namespace UDPNet
             else
                 hostname = msg;
 
-            set(incomingIp, hostname, status);
-
+            setHostInfo(incomingIp, hostname, status);
             startReceiving();
         }
 
-        public void set(string ip, string host, bool val)
+        public void setHostInfo(string ip, string host, bool val)
         {
             if (!_ipHostStatusList.ContainsKey(ip))
                 _ipHostStatusList.Add(ip, new Dictionary<string, bool>());

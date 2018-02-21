@@ -23,19 +23,20 @@ namespace DFS_Exercise
         private void connectionTimer_Tick(object sender, EventArgs e)
         {
             connectionList.Rows.Clear();
+            addRowsToConnectionList();
+        }
+
+        private void addRowsToConnectionList()
+        {
             foreach (var item in connectedClientList)
             {
                 string[] row = new string[] { "null", "null", "null" };
-
                 row[0] = item.Key;
-
                 foreach (var subItem in item.Value)
                 {
-
                     row[1] = subItem.Key;
                     row[2] = subItem.Value.ToString();
                 }
-
                 connectionList.Rows.Add(row);
             }
         }
